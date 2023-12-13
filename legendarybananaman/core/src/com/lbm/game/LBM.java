@@ -14,8 +14,6 @@ public class LBM extends Game {
         batch = new SpriteBatch();
         font = new BitmapFont(); // use libGDX's default Arial font
         this.setScreen(new MainMenuScreen(this));
-        
-        
     }
 
     @Override
