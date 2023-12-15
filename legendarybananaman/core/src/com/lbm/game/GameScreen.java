@@ -4,33 +4,31 @@
  */
 package com.lbm.game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 /**
  *
  * @author jochi2827
  */
-public class MainMenuScreen implements Screen {
-
+public class GameScreen implements Screen {
     final LBM game;
 
+    public static World world = new World(new Vector2(0, 0), true);
+    
     OrthographicCamera camera;
     
     Sprite[] buttonSprites;
     Sprite background, title;
 
-    public MainMenuScreen(final LBM game) {
+    public GameScreen(final LBM game) {
         this.game = game;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 16, 9);
-        buttonSprites = new Sprite[4];
-        buttonSprites[0] = new Sprite(new Texture(Gdx.files.internal("buttons.png")), 0, 0, 16, 16);
-        buttonSprites[0].setPosition(10, 10);
     }
 
     public void dispose() {
@@ -59,8 +57,10 @@ public class MainMenuScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        buttonSprites[0].draw(game.batch);
+
         game.batch.end();
+
+        world.step(1/60f, 6, 2);
     }
 
     public void show() {
