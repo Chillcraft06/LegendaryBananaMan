@@ -39,7 +39,7 @@ abstract public class PowerUp {
     // Contructor 
     public PowerUp() { 
         this.spawnChance = 0;
-        this.name = "griddy";
+        this.name = "powerup";
         this.powerup = powerup;
     }
     public PowerUp(float spawnChance, String name, Sprite powerup) {

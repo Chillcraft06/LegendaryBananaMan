@@ -31,10 +31,12 @@ public class TempDamage extends PowerUp {
     // Behaviours 
 
     public TempDamage() { 
+        super();
         this.duration = 0;
         this.dmgBoost = 0;
     }
     public TempDamage(float duration, int dmgBoost) {
+        this();
         this.duration = duration;
         this.dmgBoost = dmgBoost;
     }

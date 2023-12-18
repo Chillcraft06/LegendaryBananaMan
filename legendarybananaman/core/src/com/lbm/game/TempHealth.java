@@ -35,10 +35,12 @@ public class TempHealth extends PowerUp {
     
     // constructor 
     public TempHealth() { 
+        super();
         this.tempHealthAmt = 0; 
         this.addHp = 0; 
     }
     public TempHealth(int tempHealthAmt, int addHp) {
+        this();
         this.tempHealthAmt = tempHealthAmt;
         this.addHp = addHp;
     }

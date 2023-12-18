@@ -31,6 +31,7 @@ public class MainMenuScreen implements Screen {
         buttonSprites = new Sprite[4];
         buttonSprites[0] = new Sprite(new Texture(Gdx.files.internal("buttons.png")), 0, 0, 16, 16);
         buttonSprites[0].setPosition(10, 10);
+        
     }
 
     public void dispose() {
