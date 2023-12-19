@@ -10,6 +10,7 @@ public class Throwbana extends Weapon {
     public Throwbana() { 
         super(); 
         this.range = 15;
+        // put sprite for throwbana here
     }
     public Throwbana(int range) { 
         this(); 

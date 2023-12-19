@@ -1,25 +1,27 @@
 
 package com.lbm.game;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
+
 
 abstract public class Weapon {
     //attributes 
-   private int damage; 
-    private int radius; 
-    private int xPos, yPos; 
+    protected int damage; 
+    protected float radius; 
+    protected Vector2 pos;
+    protected Sprite weaponSprite;
 
     // constructor 
     public Weapon() { 
         this.damage = 0; 
         this.radius = 0; 
-        this.xPos = 0; 
-        this.yPos = 0; 
+        pos = new Vector2(0, 0);
     }
     public Weapon(int damage, int radius, int yPos, int xPos) {
         this.damage = damage;
         this.radius = radius;
-        this.yPos = yPos;
-        this.xPos = xPos; 
+        pos = new Vector2(yPos, xPos);
     }
 // mutator/accessor 
     public int getDamage() {
@@ -30,28 +32,22 @@ abstract public class Weapon {
         this.damage = damage;
     }
 
-    public int getRadius() {
+    public float getRadius() {
         return radius;
     }
 
-    public void setRadius(int radius) {
+    public void setRadius(float radius) {
         this.radius = radius;
     }
 
-    public int getxPos() {
-        return xPos;
+    public void setPosition(Vector2 pos)
+    {
+        this.pos = pos;
     }
-
-    public void setxPos(int xPos) {
-        this.xPos = xPos;
-    }
-
-    public int getyPos() {
-        return yPos;
-    }
-
-    public void setyPos(int yPos) {
-        this.yPos = yPos;
+    
+    public Vector2 getPosition()
+    {
+        return pos;
     }
     
     //behaviours - add here later if needed 
