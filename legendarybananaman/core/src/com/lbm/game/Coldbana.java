@@ -1,4 +1,8 @@
-
+/** 
+ * Sub Class of Weapon; Coldbana
+ * Dec 19th 
+ * 
+ */
 package com.lbm.game;
 
 

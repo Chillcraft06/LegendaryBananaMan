@@ -1,4 +1,8 @@
-
+/** 
+ * Abstract powerup class  
+ * Dec 19th 
+ * 
+ */
 package com.lbm.game;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;

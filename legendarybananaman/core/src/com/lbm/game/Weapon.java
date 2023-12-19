@@ -1,27 +1,29 @@
-
+/** 
+ * Abstract weapon class  
+ * Dec 19th 
+ * 
+ */
 package com.lbm.game;
-
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Vector2;
 
 
 abstract public class Weapon {
     //attributes 
-    protected int damage; 
-    protected float radius; 
-    protected Vector2 pos;
-    protected Sprite weaponSprite;
+   private int damage; 
+    private int radius; 
+    private int xPos, yPos; 
 
     // constructor 
     public Weapon() { 
         this.damage = 0; 
         this.radius = 0; 
-        pos = new Vector2(0, 0);
+        this.xPos = 0; 
+        this.yPos = 0; 
     }
     public Weapon(int damage, int radius, int yPos, int xPos) {
         this.damage = damage;
         this.radius = radius;
-        pos = new Vector2(yPos, xPos);
+        this.yPos = yPos;
+        this.xPos = xPos; 
     }
 // mutator/accessor 
     public int getDamage() {
@@ -32,22 +34,28 @@ abstract public class Weapon {
         this.damage = damage;
     }
 
-    public float getRadius() {
+    public int getRadius() {
         return radius;
     }
 
-    public void setRadius(float radius) {
+    public void setRadius(int radius) {
         this.radius = radius;
     }
 
-    public void setPosition(Vector2 pos)
-    {
-        this.pos = pos;
+    public int getxPos() {
+        return xPos;
     }
-    
-    public Vector2 getPosition()
-    {
-        return pos;
+
+    public void setxPos(int xPos) {
+        this.xPos = xPos;
+    }
+
+    public int getyPos() {
+        return yPos;
+    }
+
+    public void setyPos(int yPos) {
+        this.yPos = yPos;
     }
     
     //behaviours - add here later if needed 

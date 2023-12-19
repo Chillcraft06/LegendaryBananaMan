@@ -65,39 +65,21 @@ public class GameScreen implements Screen, InputProcessor {
     }
 
     public void render(float delta) {
-        ScreenUtils.clear(0.2f, 0.2f, 0.2f, 1);
+        ScreenUtils.clear(1, 0, 0f, 1);
         camera.update();
         game.batch.setProjectionMatrix(camera.combined);
-        if (Gdx.input.isKeyPressed(Keys.A))
-        {
-            Player.playerPosition.x += -1 * bm.getPlayerSpeed() * Gdx.graphics.getDeltaTime();
-            bm.isFlipped = true;
-        }
-        else if (Gdx.input.isKeyPressed(Keys.D))
-        {
-            Player.playerPosition.x += 1 * bm.getPlayerSpeed() * Gdx.graphics.getDeltaTime();
-            bm.isFlipped = false;
-        }
-        if (Gdx.input.isKeyPressed(Keys.S))
-        {
-            Player.playerPosition.y += -1 * bm.getPlayerSpeed() * Gdx.graphics.getDeltaTime();
-        }
-        else if (Gdx.input.isKeyPressed(Keys.W))
-        {
-            Player.playerPosition.y += 1 * bm.getPlayerSpeed() * Gdx.graphics.getDeltaTime();
-        }
         game.batch.begin();
-        //bm.setPlayerPosition(new Vector2(Player.getPlayerPosition().x + bm.getMovement().x, Player.getPlayerPosition().y + bm.getMovement().y));
+        bm.setPlayerPosition(new Vector2(Player.getPlayerPosition().x + bm.getMovement().x, Player.getPlayerPosition().y + bm.getMovement().y));
         bm.playAnim(game);
         game.batch.end();
-        
+
         world.step(1 / 60f, 6, 2);
     }
 
     public void show() {
 
     }
-    
+
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
         return false;
@@ -106,24 +88,24 @@ public class GameScreen implements Screen, InputProcessor {
     Vector3 tp = new Vector3();
 
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        if (button == 0)
-        {
-            bm.setAnimIndex(1);
-        }
-        return true;
-    }
-    
-    @Override
-    public boolean keyDown(int keycode) {
         return false;
     }
 
-    
+    @Override
+    public boolean keyDown(int keycode) {
+        switch (keycode)
+        {
+            case Keys.A:
+                bm.setMovement(new Vector2(-1 * bm.getPlayerSpeed(), bm.getMovement().y));
+                break;
+        }
+        return true;
+    }
+
     @Override
     public boolean keyUp(int keycode) {
         return false;
     }
-    
 
     @Override
     public boolean keyTyped(char character) {

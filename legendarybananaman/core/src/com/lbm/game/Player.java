@@ -1,6 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/** 
+ * Player class 
+ * Dec 19th 
+ * 
  */
 package com.lbm.game;
 
@@ -19,26 +20,40 @@ public class Player {
 
     static public Vector2 playerPosition;
     private float playerHealth = 100;
-    private float playerSpeed = 2;
+    private float playerSpeed = 1;
     private float playerAttack = 2;
     private int animIndex = 0;
-    public boolean isFlipped;
+    private Vector2 movement;
 
     public Player(Vector2 pos) {
-        playerPosition = pos;
-        isFlipped = false;
+        setPlayerPosition(pos);
+        movement = new Vector2(0, 0);
 
         initAnims();
     }
 
-    private Weapon currentWeapon;
+    //private Weapon currentWeapon;
     private Animation<TextureRegion> idleAnim;
     private Texture idleAnimSheet;
     //private Sprite[] moveAnim;
-    private Animation<TextureRegion> throwAnim;
-    private Texture throwAnimSheet;
-    private float idleStateTime = 0;
-    private float throwStateTime = 0;
+    //private Sprite[] throwAnim;
+    private float stateTime = 0;
+
+    public Vector2 getMovement() {
+        return movement;
+    }
+
+    public void setMovement(Vector2 movement) {
+        this.movement = movement;
+    }
+
+    public static Vector2 getPlayerPosition() {
+        return playerPosition;
+    }
+
+    public void setPlayerPosition(Vector2 playerPosition) {
+        Player.playerPosition = playerPosition;
+    }
 
     public float getPlayerHealth() {
         return playerHealth;
@@ -69,7 +84,6 @@ public class Player {
     }
 
     private void initAnims() {
-        // idle
         idleAnimSheet = new Texture(Gdx.files.internal("bananaManIdle.png"));
 
         TextureRegion[][] tmp = TextureRegion.split(idleAnimSheet,
@@ -83,46 +97,11 @@ public class Player {
             }
         }
         idleAnim = new Animation<TextureRegion>(0.5f, idleFrames);
-
-        // throw
-        throwAnimSheet = new Texture(Gdx.files.internal("bmthrow.png"));
-
-        TextureRegion[][] tmpThr = TextureRegion.split(throwAnimSheet,
-                throwAnimSheet.getWidth() / 14,
-                throwAnimSheet.getHeight() / 1);
-        TextureRegion[] throwFrames = new TextureRegion[14 * 1];
-        index = 0;
-        for (int i = 0; i < 1; i++) {
-            for (int j = 0; j < 14; j++) {
-                throwFrames[index++] = tmpThr[i][j];
-            }
-        }
-        throwAnim = new Animation<TextureRegion>(0.1f, throwFrames);
     }
 
     public void playAnim(LBM game) {
-        
-        if (animIndex == 0) {
-            idleStateTime += Gdx.graphics.getDeltaTime();
-            TextureRegion currentFrame = idleAnim.getKeyFrame(idleStateTime, true);
-            if (!isFlipped) {
-                game.batch.draw(currentFrame, playerPosition.x, playerPosition.y, 0.5f, 0, 1, 1, 1, 1, 0);
-            } else {
-                game.batch.draw(currentFrame, playerPosition.x, playerPosition.y, 0.5f, 0, 1, 1, -1, 1, 0);
-            }
-        } else if (animIndex == 1) {
-            throwStateTime += Gdx.graphics.getDeltaTime();
-            TextureRegion currentFrame = throwAnim.getKeyFrame(throwStateTime, true);
-            if (!isFlipped) {
-                game.batch.draw(currentFrame, playerPosition.x, playerPosition.y, 0.5f, 0, 1, 1, 1, 1, 0);
-            } else {
-                game.batch.draw(currentFrame, playerPosition.x, playerPosition.y, 0.5f, 0, 1, 1, -1, 1, 0);
-            }
-            if (throwAnim.isAnimationFinished(throwStateTime))
-            {
-                animIndex = 0;
-                throwStateTime = 0;
-            }
-        }
+        stateTime += Gdx.graphics.getDeltaTime();
+        TextureRegion currentFrame = idleAnim.getKeyFrame(stateTime, true);
+        game.batch.draw(currentFrame, playerPosition.x, playerPosition.y, 1, 1);
     }
 }

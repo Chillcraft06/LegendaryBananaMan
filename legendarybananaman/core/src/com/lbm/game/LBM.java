@@ -1,3 +1,8 @@
+/** 
+ * Main game class
+ * Dec 19th 
+ * 
+ */
 package com.lbm.game;
 
 import com.badlogic.gdx.Game;
@@ -13,7 +18,7 @@ public class LBM extends Game {
     public void create() {
         batch = new SpriteBatch();
         font = new BitmapFont(); // use libGDX's default Arial font
-        this.setScreen(new GameScreen(this));
+        this.setScreen(new MainMenuScreen(this));
     }
 
     @Override

@@ -1,4 +1,8 @@
-
+/** 
+ * Sub Class of Powerup; TempHealth
+ * Dec 19th 
+ * 
+ */
 package com.lbm.game;
 
 public class TempHealth extends PowerUp {

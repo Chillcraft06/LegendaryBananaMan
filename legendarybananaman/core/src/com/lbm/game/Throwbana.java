@@ -1,4 +1,8 @@
-
+/** 
+ * Sub Class of Weapon; Throwbana
+ * Dec 19th 
+ * 
+ */
 package com.lbm.game;
 
 
@@ -10,7 +14,6 @@ public class Throwbana extends Weapon {
     public Throwbana() { 
         super(); 
         this.range = 15;
-        // put sprite for throwbana here
     }
     public Throwbana(int range) { 
         this(); 

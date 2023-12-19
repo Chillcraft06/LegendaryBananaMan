@@ -1,4 +1,8 @@
-
+/** 
+ * Sub Class of Weapon; Bananarang
+ * Dec 19th 
+ * 
+ */
 package com.lbm.game;
 
 

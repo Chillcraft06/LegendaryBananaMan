@@ -1,4 +1,8 @@
-
+/** 
+ * Sub Class of Powerup; PermSpeed
+ * Dec 19th 
+ * 
+ */
 package com.lbm.game;
 
 public class PermSpeed extends PowerUp {

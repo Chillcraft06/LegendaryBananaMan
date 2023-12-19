@@ -1,4 +1,8 @@
-
+/** 
+ * Sub Class of Weapon; Boombana 
+ * Dec 19th 
+ * 
+ */
 package com.lbm.game;
 
 

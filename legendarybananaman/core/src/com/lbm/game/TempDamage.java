@@ -1,4 +1,8 @@
-
+/** 
+ * Sub Class of Powerup; TempDamage
+ * Dec 19th 
+ * 
+ */
 package com.lbm.game;
 
 
